@@ -5,4 +5,4 @@ J'ai repris le projet là où je l'avais laissé, j'étais en train de chercher 
 
 ![Not working](https://github.com/Zetos11/StageM2/blob/main/Figures/Screenshot_20240408-132435.webp?raw=true)
 
-La suite des opérations est logique, maintenant qu'on a une mesure relativement précise de la batterie est qu'on peut faire des suppositions quand à la consommation d'une application sur un certain laps de temps, on continue de chercher à obtenir une meilleure granularitée, si possible en pouvant récupérer le consommation des composants du téléphone (Caméra, GPS, CPU, Ecran, etc.).
+La suite des opérations est logique, maintenant qu'on a une mesure relativement précise de la batterie et qu'on peut faire des suppositions quand à la consommation d'une application sur un certain laps de temps, on continue de chercher à obtenir une meilleure granularitée, si possible en pouvant récupérer le consommation des composants du téléphone (Caméra, GPS, CPU, Ecran, etc.).
