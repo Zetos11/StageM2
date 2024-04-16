@@ -26,21 +26,24 @@ Next :
 # Liens Utiles 
 
 ## Documentation Android
-https://developer.android.com/reference/android/os/PowerManager
-https://developer.android.com/develop/background-work/services/aidl
-https://developer.android.com/reference/android/os/BatteryManager
-https://source.android.com/docs/core/power/component
-https://developer.android.com/studio/profile/power-profiler?hl=fr#power-rails
+
+- https://developer.android.com/reference/android/os/PowerManager
+- https://developer.android.com/develop/background-work/services/aidl
+- https://developer.android.com/reference/android/os/BatteryManager
+- https://source.android.com/docs/core/power/component
+- https://developer.android.com/studio/profile/power-profiler?hl=fr#power-rails
 
 ## Code Source Android
-https://cs.android.com/android/platform/superproject/main
-https://cs.android.com/android/platform/superproject/main/+/main:external/perfetto/src/android_internal/power_stats.cc
-https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/power/stats/1.0/IPowerStats.hal
-https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/os/BatteryConsumer.java;drc=3d19fbcc09b1b44928639b06cd0b88f735cd988d;bpv=0;bpt=1;l=566
+
+- https://cs.android.com/android/platform/superproject/main
+- https://cs.android.com/android/platform/superproject/main/+/main:external/perfetto/src/android_internal/power_stats.cc
+- https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/power/stats/1.0/IPowerStats.hal
+- https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/os/BatteryConsumer.java;drc=3d19fbcc09b1b44928639b06cd0b88f735cd988d;bpv=0;bpt=1;l=566
 
 ## SO or Reddit useful posts
-https://www.reddit.com/r/AndroidQuestions/comments/xgu8bd/what_is_dalvik/
-https://stackoverflow.com/questions/55970137/bypass-androids-hidden-api-restrictions
-https://stackoverflow.com/questions/31908205/what-exactly-does-androids-hide-annotation-do?noredirect=1&lq=1
-https://stackoverflow.com/questions/15417254/class-forname-throws-classnotfoundexception
-https://www.reddit.com/r/tasker/comments/i94rjj/using_the_java_function_action_to_get_raw_battery/
+
+- https://www.reddit.com/r/AndroidQuestions/comments/xgu8bd/what_is_dalvik/
+- https://stackoverflow.com/questions/55970137/bypass-androids-hidden-api-restrictions
+- https://stackoverflow.com/questions/31908205/what-exactly-does-androids-hide-annotation-do?noredirect=1&lq=1
+- https://stackoverflow.com/questions/15417254/class-forname-throws-classnotfoundexception
+- https://www.reddit.com/r/tasker/comments/i94rjj/using_the_java_function_action_to_get_raw_battery/
