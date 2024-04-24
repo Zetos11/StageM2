@@ -22,6 +22,11 @@ Next :
 - SystemHealthDataStats
 - Using a .so in CC to access the PowerStatsHAL interface using the native Binder
 
+## Semaine 3
+
+J'utilise le Google Pixel 7 Pro pour mes tests, en étudiant le code de perfetto, il s'avère que l'accès aux rails se fait bien via l'interface **android.hardware.power.stats**. 
+Je cherche donc à trouver cette interface directement sur l'appareil pour savoir comment l'utiliser. 
+J'ai trouvé un fichier android.hardware.power.stats-service.pixel.rc qui contient des informations à ce sujet (Sur ce chemin : Google Pixel 7 Pro/_/vendor/etc/init/android.hardware.power.stats-service.pixel.rc).
 
 # Liens Utiles 
 
@@ -29,9 +34,10 @@ Next :
 
 - https://developer.android.com/reference/android/os/PowerManager
 - https://developer.android.com/develop/background-work/services/aidl
-- https://developer.android.com/reference/android/os/BatteryManager
+- https://developer.android.com/reference/android/os/BatteryManager 
 - https://source.android.com/docs/core/power/component
 - https://developer.android.com/studio/profile/power-profiler?hl=fr#power-rails
+- https://developer.android.com/reference/androidx/benchmark/macro/PowerMetric
 
 ## Code Source Android
 
@@ -47,3 +53,4 @@ Next :
 - https://stackoverflow.com/questions/31908205/what-exactly-does-androids-hide-annotation-do?noredirect=1&lq=1
 - https://stackoverflow.com/questions/15417254/class-forname-throws-classnotfoundexception
 - https://www.reddit.com/r/tasker/comments/i94rjj/using_the_java_function_action_to_get_raw_battery/
+- https://stackoverflow.com/questions/35449082/how-to-get-the-battery-usage-details-of-installed-apps
