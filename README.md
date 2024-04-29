@@ -16,17 +16,34 @@ Les options proposée par le BatteryManager ont était épuisées, il faut donc 
 Dans le code source d'Android 14, on trouve plusieurs interfaces et classes censées fournir des informations supplémentaires sur la santé de l'appareil et sa batterie.
 Malheureusement la plupart d'entre elles sont marqués de l'annotation @hide qui depuis Android 11 empĉhe les développeurs d'interagir avec certaines APIs et interfaces.
 Ces mesures sont décrites dans la documentation comme permettants aux dévellopeurs de n'utiliser que des APIs maintenues entre les différentes versions d'Android et d'éviter des applications dépendentes de méthode "cachée". Des développeurs ont trouvé des stratégies pour continuer d'interagir avec ces classes, en utilisant le principe de la réflexion en Java. Il était assez incertain si cette méthode pouvait fonctionner car elle semblait avoir été bloqué par Android depuis 1 an, cependant des posts sur certains forums assuraient que celle-ci était toujurs d'actualité. J'ai donc passé un certain temps à expérimenter avec de la réflexion simple puis de la double réflexion, le meilleur résultat que j'ai pu obtenir était la création d'une instance de l'API caché BatteryConsumer, mais je n'ai jamais réussi à utiliser ses méthodes qui semblait toujours inaccessible.
+J'ai trouvé dans l'api SystemHealthDataStats la possibilité de récupérer des mesures liés à la "santé" de l'appareil.
+Il semblait donc être possible de récupérer ces donnnées et potentiellement de les croiser avec les valeurs du power_profile.xml 
 
-Next :
 
-- SystemHealthDataStats
 - Using a .so in CC to access the PowerStatsHAL interface using the native Binder
+
 
 ## Semaine 3
 
 J'utilise le Google Pixel 7 Pro pour mes tests, en étudiant le code de perfetto, il s'avère que l'accès aux rails se fait bien via l'interface **android.hardware.power.stats**. 
 Je cherche donc à trouver cette interface directement sur l'appareil pour savoir comment l'utiliser. 
 J'ai trouvé un fichier android.hardware.power.stats-service.pixel.rc qui contient des informations à ce sujet (Sur ce chemin : Google Pixel 7 Pro/_/vendor/etc/init/android.hardware.power.stats-service.pixel.rc).
+Malheureusement, il s'avère que ces interfaces ne sont pas conçues pour être accessibles de puis la partition "utilisateur" du téléphone. 
+Pour les utiliser il faudrait en théorie avoir accès à la partition système. Ce qui pourrait être envisageable en utilisant le VNDK (Vendor Native Developpment Kit) mais je préférerais trouver une autre solution pour répondre à notre problématique.
+Je me suis donc finalement retourné vers Perfetto, la solution officielle de Google/Android pour le monitoring de ressource (Smartphone, Web ou Linux).
+Je savais que via cette solution je pouvais récupérer mes données liées aux rails d'alimentation mais je voulais l'éviter pour plusieurs raisons :
+- Elle ne me permet pas d'implémenter la solution sous la forme d'une application directement sur le téléphone et passera forcément par une application installée sur une machine à côté.
+- Je tenais à réussir à repoduire moi mếme cette récupération de donnée, malheureusement même en étudiant le code source je n'ai jamais réussi.
+- Les résultats de l'analyse me semblait être dans un format spécifique dédié à un intérpréteur préçis.
+
+J'ai commencé par faire des tests avec un script Shell pour tenter de faire des mesures via Perfetto et ADB, afin d'étudier ce que je récupérais. 
+La sortie était encodé en "protobuf binary" pour être utilisé par Perfetto UI, mais un outil de conversion existe pour obtenir les données sous forme d'un Json ou d'un txt.
+
+J'ai donc créé une application en Python, pour l'instant tout en ligne de commande, qui teste la présence d'un téléphone connecté, de la disponibilité des rails d'alimentation sur le modèle testé, puis récupère toute les 250ms les consommations de l'ensemble des rails pendant 60 secondes. 
+La deuxième partie consistait à créer un parser pour le fichier de sortie pour récupérer les valeurs utiles du monitoring.
+
+## Semaine 4
+
 
 # Liens Utiles 
 
