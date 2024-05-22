@@ -22,8 +22,7 @@ Il semblait donc être possible de récupérer ces donnnées et potentiellement 
 
 - Using a .so in CC to access the PowerStatsHAL interface using the native Binder
 
-
-## Semaine 3
+## Semaine 3
 
 J'utilise le Google Pixel 7 Pro pour mes tests, en étudiant le code de perfetto, il s'avère que l'accès aux rails se fait bien via l'interface **android.hardware.power.stats**. 
 Je cherche donc à trouver cette interface directement sur l'appareil pour savoir comment l'utiliser. 
@@ -42,12 +41,54 @@ La sortie était encodé en "protobuf binary" pour être utilisé par Perfetto U
 J'ai donc créé une application en Python, pour l'instant tout en ligne de commande, qui teste la présence d'un téléphone connecté, de la disponibilité des rails d'alimentation sur le modèle testé, puis récupère toute les 250ms les consommations de l'ensemble des rails pendant 60 secondes. 
 La deuxième partie consistait à créer un parser pour le fichier de sortie pour récupérer les valeurs utiles du monitoring.
 
-## Semaine 4
+## Semaine 4
+
+J'ai avancé sur l'application en Python, j'ai maintenant un parser fonctionnel pour récupérer mes données de consommations d'énérgies.
+Après comparaison entre mon parsing et les résultats obtenues avec la même analyse sur l'outil de visualisation officiel de Perfetto, mes résultats sont concluant et J'obtiens bien la consommation précise du materiel du téléphone.
+
+![Not working](https://github.com/Zetos11/StageM2/blob/main/Figures/powerRails.png?raw=true)
+
+La suite du projet est d'obtenir une meilleure précision, en effet actuellement les mesures représente la totalité de la consommation du téléphone, or nous voulons une précision à l'échelle de l'application pour commencer. 
+
+Avant d'avancer sur la précision j'ai pris le temps de retravailler l'application :
+
+- Ajout d'un listing et de la gestion du package à tester directement depuis l'invite de commande. 
+- Ajout d'une méthode de filtre des packages à tester 
+- Ajout d'une interface de sélection
+- Refactor global du projet pour séparer les fichiers de sorties de l'analyse.
+- Gestion d'erreur/d'exception et un peu de documentation
+
+Pour l'instant j'ai laissé tomber l'idée de faire une interface graphique propre au profit d'une app toute en ligne de commande, par soucis de temps et de priorité.
+
+## Semaine 5
+
+La première étape était de réfléchir à la répartition de la consommation de l'application au niveau du matériel.
+Par exemple, on peut considérer qu'une application au premier plan du téléphone avec une interface graphique sera responsable de quasiment 100% de la consommation de l'écran. 
+En revanche, pour le CPU ou la RAM le calcul est beaucoup plus compliqué.
+
+Pour le CPU, Perfetto propose de nombreuses métriques qui, croisées avec les données du power_profile.xml, permettent d'isoler facilement la consommation d'une application. On peut trouver le détail des exécutions des threads du package testé, plus exactement, on peut savoir quand et sur quel coeur de processeur chaque threads fait ses exécutions. En croisant les intervalles de temps avec les fréquences de chaque coeur pendant les exécutions ainsi qu'avec la consommation de chaque coeur pour une fréquence donnée, on peut trouver la consommation de tout les threads lié à notre application.
+
+Pour la mémoire c'est plus complexe, la solution la plus simple serait de trouver la coût des actions liés à la mémoire.
+Malheureusement Perfetto ne permet pas un profiling facile de la mémoire. Pour cela il faudrait que le package testé soit **versionable** ou **debugable** qui sont deux flags Android utilisé pour les tests de performances par les développeurs qui ne sont pas censé rester en production. Les seuls données auxquels nous avont accès pour l'instant sont des quantités de mémoire virtuelle aloué ou le niveau de verouillage de la mémoire de l'application. Ces valeurs ne nous permettent pas de déduire une consommation.
+
+## Semaine 6
+
+Le projet a peu avancé cette semaine avec deux jours fériés et un jour de congé imposé, j'ai profiter des deux jours pour continuer de refactor encore un peu mon code et essayer de le rendre plus efficace, notamment dans la partie parsing.
+
+En effet, afin d'obtenir une meilleure granularitée, je cherchais a obtenir le plus d'informations possible de l'analyse perfetto mais ces traitements supplémentaires commençait non seulement à ajouter du volume inutile à mon code mais également à allourdir la charge côté télépone et ajouter du bruit dans la consommation.
+
+## Semaine 7
+
+Je me suis rapidement rendu compte d'un problème à mesure que je multipliais les métriques que je récupérais via Perfetto, le fichier de sorti devenait (très) volumineux. Il atteignait les huit millions de lignes assez souvent et dépassait les 65mo. Le fichier de sortie de base de l'analyse encodé était plus léger mais l'exploiter dans ma configuration sans le convertir n'était pas envisageable. J'ai essayé de le faire en étudiant le code source de Perfetto mais sans succès, comprendre la structure utilisé dans l'outil était envisageable mais beaucoup trop chronophage et clairement hors sujet. Dans ma configuration actuelle, je parcourais deux fois le fichier complet, une première fois pour récupérer toutes les variables créés au cours de l'analyse qui seront nécessaire au parsing, puis une deuxième fois pour le parsing lui-même. J'ai d'abord retravaillé mon code pour réduire les parcours des données, en stockant toute les données potentiellement intéressante lors du premier parcours pour évacuer toute les lignes inutiles mais cela ne représentait un gain que de 20-25% qui, sans être négligeable, n'était pas sufffisant.
+
+ J'ai fais le choix de réessayer d'utiliser certains outils fournis par Perfetto pour l'analyse. Notamment leur librairie Python qui étant capable de parser le fichier d'analyse encodé pouvait me faire gagner du temps malgré une documentation quasiment inexistante.
+
+## Semaine 8
 
 
 # Liens Utiles 
 
-## Documentation Android
+## Documentation Android
 
 - https://developer.android.com/reference/android/os/PowerManager
 - https://developer.android.com/develop/background-work/services/aidl
@@ -56,12 +97,20 @@ La deuxième partie consistait à créer un parser pour le fichier de sortie pou
 - https://developer.android.com/studio/profile/power-profiler?hl=fr#power-rails
 - https://developer.android.com/reference/androidx/benchmark/macro/PowerMetric
 
-## Code Source Android
+## Code Source Android
 
 - https://cs.android.com/android/platform/superproject/main
 - https://cs.android.com/android/platform/superproject/main/+/main:external/perfetto/src/android_internal/power_stats.cc
 - https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/power/stats/1.0/IPowerStats.hal
 - https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/os/BatteryConsumer.java;drc=3d19fbcc09b1b44928639b06cd0b88f735cd988d;bpv=0;bpt=1;l=566
+
+## Perfetto
+
+- https://perfetto.dev/
+- https://perfetto.dev/docs/
+- https://perfetto.dev/docs/reference/trace-config-proto
+- https://perfetto.dev/docs/concepts/config
+- https://ui.perfetto.dev/
 
 ## SO or Reddit useful posts
 
@@ -71,3 +120,10 @@ La deuxième partie consistait à créer un parser pour le fichier de sortie pou
 - https://stackoverflow.com/questions/15417254/class-forname-throws-classnotfoundexception
 - https://www.reddit.com/r/tasker/comments/i94rjj/using_the_java_function_action_to_get_raw_battery/
 - https://stackoverflow.com/questions/35449082/how-to-get-the-battery-usage-details-of-installed-apps
+
+## Sidenotes
+
+- Sensor lié au power rails uniquement présent sur les Pixel 6 et plus.
+- Power_profile.xml toujours pas accessible facilement sur tout les appareils.
+- Pas de heap dump sur une app pas debugable/versionable
+- Matplotlib + Seaborn pour les graphs
