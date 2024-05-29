@@ -85,6 +85,17 @@ Je me suis rapidement rendu compte d'un problème à mesure que je multipliais l
 
 ## Semaine 8
 
+Ma journée entière du jeudi était dédié à un atelier portant sur le droit neuro-éthique auquel j'ai assisté toute la journée en visio. Ce n'est pas mon domaine du tout et les partis portant spécifiquement sur des aspects précis du droit numérique et commercial était très abstraite mais j'ai pu apprendre beaucoup de chose sur les partis plus en liens avec les pratiques et stratégies des GAFAM (commerce/tracking)
+
+En utilisant la libraire python j'ai réussi à obtenir la consommation (normalement) précise de chaque coeur du processeur pour tout les threads de mon application. Cette mesure ajoutée à la consommation de l'écran pour une application au premier plan représenterait une majorité de la consommation d'énérgie imputable à l'app. Je me suis donc penché sur deux questions importante pour la suite de mon projet :
+
+- Comment faire pour m'assurer que les mesures que j'obtenais était suffisament précise pour en tirer des conclusions ? A quel reférentiel puis-je comparer mes données pour m'en assurer ?
+- Dans la suite du projet, l'objectif serait également d'analyser la consommation des TPLs (Third Party Librairies) qu'on retrouve un peu partout dans les applications du stores pour du crash reporting, du monitoring, des publicités... C'est librairies produisent-elles des signatures analysables par le biais de ma solution actuelle ? Le format apk des applications sorties sur le store permet-il le même niveau de précision des mesures que celui que j'obtiens dans le cadre de mes expérimentations ? 
+
+Répondre à cette deuxième question pourrait me donner des éléments de solutions pour la première car si je peux analyser des TPLs sur lesquels Rémy a déjà travailler avec une sonde physique je pourrais au moins avoir une approche de l'ordres de grandeur des variations que je suis censé trouver entre TPLs du même type. Ce qui me permettrait d'estimer la précision de mon analyse en comparant mes résultats aux siens.
+
+Rémy m'a donc fourni les APKs contenant les TPLs sur lesquels il a travaillé, je vais m'en servir dans les semaines qui viennent pour améliorer et tester ma méthode d'analyse.
+
 
 # Liens Utiles 
 
@@ -121,7 +132,7 @@ Je me suis rapidement rendu compte d'un problème à mesure que je multipliais l
 - https://www.reddit.com/r/tasker/comments/i94rjj/using_the_java_function_action_to_get_raw_battery/
 - https://stackoverflow.com/questions/35449082/how-to-get-the-battery-usage-details-of-installed-apps
 
-## Sidenotes
+## Sidenotes
 
 - Sensor lié au power rails uniquement présent sur les Pixel 6 et plus.
 - Power_profile.xml toujours pas accessible facilement sur tout les appareils.
