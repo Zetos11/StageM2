@@ -96,6 +96,23 @@ Répondre à cette deuxième question pourrait me donner des éléments de solut
 
 Rémy m'a donc fourni les APKs contenant les TPLs sur lesquels il a travaillé, je vais m'en servir dans les semaines qui viennent pour améliorer et tester ma méthode d'analyse.
 
+## Semaine 9
+
+J'ai commencé à travailler avec le APKs, j'ai d'abord testé la présence de threads spécifiques à chacune des TPLs.
+J'ai effectivement trouvé des threads créés pour chaque TPLs, ces threads varient comme je m'y attendais, malheureusement aucune convention/règle ne nommage spécifique ne me permet de les identifier à coup sûr.
+La meilleure stratégie pourrait consister à analyser d'abord l'APK template qui ne contient aucune TPL, puis comparer les threads de l'APK template avec ceux de l'APK contenant le TPL.
+
+On pourrait ensuite isoler la consommation de ces threads pour obtenir une estimation précise.
+
+En modifiant mon code pour tester les TPLs, je me suis rendu compte que j'avais beaucoup modifié le code du sensor et que les multiples refactor avait beaucoup éloigné l'application de son fonctionnement initial. Je perdais beaucoup de temps pour chaque test à modifier des portions importantes du code.
+
+J'ai donc décidé de créer la 3ème version en retravaillant la forme global du main. J'y ai ajouté plusieurs choses :
+
+- La gestion de plusieurs modes d'exécutions, avec des stratégies différentes pour uniquement la lecture des rails, les tests d'applications au premier plan, les tests de TPLs, avec une implémentation ouverte à l'ajout de nouvelle stratégie.
+
+- J'ai modifié l'entrée en ligne de commande, pour rendre la recherche optionnelle.
+
+- J'ai commencé à travailler sur l'ajout de threading pour pouvoir gérer le scan sur l'appareil et des actions en parallèle.
 
 # Liens Utiles 
 
