@@ -96,7 +96,7 @@ Répondre à cette deuxième question pourrait me donner des éléments de solut
 
 Rémy m'a donc fourni les APKs contenant les TPLs sur lesquels il a travaillé, je vais m'en servir dans les semaines qui viennent pour améliorer et tester ma méthode d'analyse.
 
-## Semaine 9
+## Semaine 9
 
 J'ai commencé à travailler avec le APKs, j'ai d'abord testé la présence de threads spécifiques à chacune des TPLs.
 J'ai effectivement trouvé des threads créés pour chaque TPLs, ces threads varient comme je m'y attendais, malheureusement aucune convention/règle ne nommage spécifique ne me permet de les identifier à coup sûr.
@@ -114,7 +114,7 @@ J'ai donc décidé de créer la 3ème version en retravaillant la forme global d
 
 - J'ai commencé à travailler sur l'ajout de threading pour pouvoir gérer le scan sur l'appareil et des actions en parallèle.
 
-## Semaine 10
+## Semaine 10
 
 J'ai fini le refactor de ma 3ème version et créé le code pour tester les TPLs. 
 
@@ -125,7 +125,7 @@ Je répète l'opération pour chaque TPL à comparer et pour le template, puis j
 
 Je dois encore retravailler le modèle du résultat final, mes cours d'EEEA sont loin et les unités de mon résultat ne me semble pas être correcte
 
-## Semaine 11 
+## Semaine 11 
 
 Semaine compliquée, j'ai été malade quasiment toute la semaine donc j'ai travaillé depuis chez moi.
 
@@ -137,6 +137,8 @@ J'ai donc commencé à décortiquer plus en détail chaque APK pour potentiellem
 L'une des APK de publicité ne fonctionne plus correctement, la signature de la TPL à changer et ne permet plus de faire des tests comme ils étaient fait avant.
 
 Du côté du monitoring, la TPL NewRelic renvoie également des résultats surprenant avec une consommation du CPU 1000 fois supérieur à ses concurents, j'ai également cherché dans le code et dans les logs les traces d'une mauvaise exécution qui pourrait expliquer cette consommation, mais sans succès. Le TPL semble bien envoyer ses informations, au bon timing, dans le bon format sans erreur apparente.
+
+![Not working](https://github.com/Zetos11/StageM2/blob/main/Figures/NewRelic1000.png?raw=true)
 
 Je crains que le parser Python fourni par Perfetto manque de précision dans l'analyse, je suis entré en contact avec des développeurs de Perfetto qui m'ont pourtant confirmé que le parser marchait correctement.
 
