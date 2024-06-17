@@ -114,6 +114,32 @@ J'ai donc décidé de créer la 3ème version en retravaillant la forme global d
 
 - J'ai commencé à travailler sur l'ajout de threading pour pouvoir gérer le scan sur l'appareil et des actions en parallèle.
 
+## Semaine 10
+
+J'ai fini le refactor de ma 3ème version et créé le code pour tester les TPLs. 
+
+J'ai abandonné le projet de threading car mon problème d'exécution ne vient pas Python mais d'ADB qui m'empêche de lancer d'autre commande pednant le scan Perfetto.
+La solution aurait pu être de passer l'analayse en background mais le paramètre censé le faire ne fonctionne pas dans mes expérience.
+J'ai donc opté pour la séparation du process d'analyse de chaque TPL, au lieu de lancer un scan puis de faire toute les analayses pendant celui-ci, je lance un APK contenant la TPL à analyser, je le lance un scan avec des paramètres différents pour alléger l'exécution, puis je parse le résultat d'analyse individuellement. 
+Je répète l'opération pour chaque TPL à comparer et pour le template, puis je fais un traitement final dans lequel je compare les résultats de chaque analyse.
+
+Je dois encore retravailler le modèle du résultat final, mes cours d'EEEA sont loin et les unités de mon résultat ne me semble pas être correcte
+
+## Semaine 11 
+
+Semaine compliquée, j'ai été malade quasiment toute la semaine donc j'ai travaillé depuis chez moi.
+
+J'ai continué à travailler sur mon modèle pour essayer de l'améliorer et de vérifier mes premiers résulats d'analyse de TPLs.
+
+En comparant mes résultats à ceux obtenues par Rémy l'année passée, je me suis aperçu d'écart assez important pour plusieurs APKs. 
+J'ai donc commencé à décortiquer plus en détail chaque APK pour potentiellement y trouver des méthodes ou des clés deprecated qui provoqueraient des comportement inattendus. 
+
+L'une des APK de publicité ne fonctionne plus correctement, la signature de la TPL à changer et ne permet plus de faire des tests comme ils étaient fait avant.
+
+Du côté du monitoring, la TPL NewRelic renvoie également des résultats surprenant avec une consommation du CPU 1000 fois supérieur à ses concurents, j'ai également cherché dans le code et dans les logs les traces d'une mauvaise exécution qui pourrait expliquer cette consommation, mais sans succès. Le TPL semble bien envoyer ses informations, au bon timing, dans le bon format sans erreur apparente.
+
+Je crains que le parser Python fourni par Perfetto manque de précision dans l'analyse, je suis entré en contact avec des développeurs de Perfetto qui m'ont pourtant confirmé que le parser marchait correctement.
+
 # Liens Utiles 
 
 ## Documentation Android
@@ -148,6 +174,7 @@ J'ai donc décidé de créer la 3ème version en retravaillant la forme global d
 - https://stackoverflow.com/questions/15417254/class-forname-throws-classnotfoundexception
 - https://www.reddit.com/r/tasker/comments/i94rjj/using_the_java_function_action_to_get_raw_battery/
 - https://stackoverflow.com/questions/35449082/how-to-get-the-battery-usage-details-of-installed-apps
+- https://medium.com/@kalpeshsomani30/android-power-consumption-analysis-c019b9998287
 
 ## Sidenotes
 
