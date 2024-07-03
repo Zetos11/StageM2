@@ -142,6 +142,34 @@ Du côté du monitoring, la TPL NewRelic renvoie également des résultats surpr
 
 Je crains que le parser Python fourni par Perfetto manque de précision dans l'analyse, je suis entré en contact avec des développeurs de Perfetto qui m'ont pourtant confirmé que le parser marchait correctement.
 
+## Semaine 12
+
+Une des priorités devient de réussir à vérifier la précision des données récupérées via perfetto et le cpu tracer Python. Les modèles de la documentation de Google/Android sont en mAh alors que les résultats dans Android Studio sont en μWs or, aucun voltage ne semble être disponible pour les composants du téléphone. 
+
+![Not working](https://github.com/Zetos11/StageM2/blob/main/Figures/microwattsSeconde.png?raw=true) 
+
+Il parait donc impossible que perfetto soit capable de passer d'une mesure à l'autre sans avoir accès au voltage, deux explications possible :
+
+- Soit les sondes en sont capable et font la conversion directement avant de renvoyer les mesures. C'est possible mais ça ne correspond pas tout à fait à la présentations dans la documentation.
+
+- Soit Perfetto/l'outil de calcul fait des approximations du voltage en ne prenant que celui de la batterie (qui lui et disponible en temps réel), dans ce cas là les ordres de grandeurs des mesures pourraient être faussés puisque tout les composants n'ont pas besoin de la même tension pour fonctionner.
+
+En échangeant avec Romain, une solution pour obtenir la réponse serait d'essayer de résoudre un système d'inéquation avec plusieurs inconnues, avec d'un côté les valeurs en mAh de consommation logique obtenues en croisant les temps d'éxecutions avec le power_profile.xml et de l'autre côté la consommation mesurée en μWs donnée par perfetto.Les inconnues seraient le voltage des différents composants. On pourrait ensuite envisager de croiser nos valeurs potentiels avec celle qu'on réussirait à trouver sur les sites construsteurs pour confier que notre modèle tient la route.
+
+## Semaine 13 
+
+Grosse semaine d'échange et de discution avec plusieurs personnes de l'équipe.
+
+En plus de la visite du lundi, j'ai eu le mardi un échange assez long avec Simon Bliudze pour discuter des sujets de thèse possible avec lui ainsi que de son travail en général. Il en est ressorti que, malgré la distance initial entre nos domaines d'études et la technicité de ses travaux, des options pour commencer une thèse d'ici 6mois - 1ans était envisageable. Ses travaux ne font pas partie des domaines qui m'intéresse à première vue mais leurs domaines d'applications ainsi que leur interêt global beaucoup plus. Nous allons continuer à échanger à ce propos dans les mois qui viennent.
+
+Le mercredi j'ai rencontré et discuté avec Guillaume Fieni qui travaille sur PowerAPI. Il est plus ou moins acté que je serais en CDD d'ingénieur de recherche à partir de septembre sur le projet PowerAPI, je lu ia idonc présenté mes travaux sur Android et nous avons discuté ensemble des directions que pourrait prendre mon travail l'année prochaine. Actuellement PowerAPI est plutôt dédié à des serveurs, l'extension pour Android est donc la bienvenue, l'idée resterait surmeent de créer un module à l'image de mon projet actuel qui pourrait être lancé via l'interface actuelle de PowerAPI.
+
+En fin de semaine, je me suis repenché sur l'idée d'équation, j'ai commencé à expérimenter avec SymPy pour prendre l'outil en main. Je me suis assez vite rendu compte d'un problème : Je ne pouvais pas récuperer toute les métriques nécessaire à l'équation en simultanées. Je passe par ADB pour obtenir mes mesures de perfetto, mais pour obtenir le reste je dois passer par le BatteryManager directement dans une app Android. Je ne peux pas utiliser les deux en même temps sans risquer d'ajouter du bruit qui fausserait le calcul dans l'analyse de perfetto.
+
+Je pourrais essayer de reproduire un environnement d'exécution très proche deux fois et faire une emsure à chaque fois mais c'est ajouté des éléments perturbateurs potentiels dans une hypothèse déjà peu stable.
+
+## Semaine 14
+
 # Liens Utiles 
 
 ## Documentation Android
