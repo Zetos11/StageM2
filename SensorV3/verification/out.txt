@@ -1,0 +1,1029 @@
+packet {
+  clock_snapshot {
+    primary_trace_clock: BUILTIN_CLOCK_BOOTTIME
+    clocks {
+      clock_id: 6
+      timestamp: 5860905689181
+    }
+    clocks {
+      clock_id: 2
+      timestamp: 1723039123516002861
+    }
+    clocks {
+      clock_id: 4
+      timestamp: 5860902836520
+    }
+    clocks {
+      clock_id: 1
+      timestamp: 1723039123518856010
+    }
+    clocks {
+      clock_id: 3
+      timestamp: 5860905689791
+    }
+    clocks {
+      clock_id: 5
+      timestamp: 5860905689995
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+}
+packet {
+  clock_snapshot {
+    primary_trace_clock: BUILTIN_CLOCK_BOOTTIME
+    clocks {
+      clock_id: 6
+      timestamp: 5860905740044
+    }
+    clocks {
+      clock_id: 2
+      timestamp: 1723039123516002861
+    }
+    clocks {
+      clock_id: 4
+      timestamp: 5860902836520
+    }
+    clocks {
+      clock_id: 1
+      timestamp: 1723039123518906751
+    }
+    clocks {
+      clock_id: 3
+      timestamp: 5860905740573
+    }
+    clocks {
+      clock_id: 5
+      timestamp: 5860905740736
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+}
+packet {
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  synchronization_marker: "\202Gzv\262\215B\272\201\33432mW\240y"
+}
+packet {
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  trace_config {
+    buffers {
+      size_kb: 65536
+      fill_policy: RING_BUFFER
+    }
+    data_sources {
+      config {
+        name: "android.power"
+        android_power_config {
+          battery_poll_ms: 250
+          collect_power_rails: true
+          battery_counters: BATTERY_COUNTER_CAPACITY_PERCENT
+          battery_counters: BATTERY_COUNTER_CHARGE
+          battery_counters: BATTERY_COUNTER_CURRENT
+        }
+      }
+    }
+    duration_ms: 1000
+    enable_extra_guardrails: false
+    statsd_metadata {
+    }
+    statsd_logging: STATSD_LOGGING_DISABLED
+    trace_uuid_msb: -8751169462369187139
+    trace_uuid_lsb: 2758980291959888667
+  }
+}
+packet {
+  system_info {
+    tracing_service_version: "Perfetto v25.0 (N/A)"
+    utsname {
+      sysname: "Linux"
+      version: "#1 SMP PREEMPT Fri Aug 5 19:34:17 UTC 2022"
+      machine: "aarch64"
+      release: "5.10.107-android13-4-00003-g777901393eee-ab8910922"
+    }
+    android_build_fingerprint: "google/cheetah/cheetah:13/TD1A.220804.009.A2/8940162:user/release-keys"
+    android_sdk_version: 33
+    hz: 100
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+}
+packet {
+  timestamp: 5860905718844
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  service_event {
+    tracing_started: true
+  }
+}
+packet {
+  timestamp: 5860923924695
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  service_event {
+    all_data_sources_started: true
+  }
+}
+packet {
+  timestamp: 5861912128350
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  service_event {
+    all_data_sources_flushed: true
+  }
+}
+packet {
+  timestamp: 5861914069715
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  service_event {
+    tracing_disabled: true
+  }
+}
+packet {
+  sequence_flags: 1
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+  previous_packet_dropped: true
+}
+packet {
+  timestamp: 5860907322116
+  battery {
+    charge_counter_uah: 5112000
+    capacity_percent: 100.000000
+    current_ua: 2500
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5860911064018
+  sequence_flags: 2
+  power_rails {
+    rail_descriptor {
+      index: 0
+      rail_name: "S9M_LLDO3"
+      subsys_name: "LDO"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 1
+      rail_name: "VSYS_PWR_MODEM"
+      subsys_name: "Modem"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 2
+      rail_name: "VSYS_PWR_RFFE"
+      subsys_name: "Cellular"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 3
+      rail_name: "S1M_VDD_MIF"
+      subsys_name: "MIF"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 4
+      rail_name: "S2M_VDD_CPUCL2"
+      subsys_name: "CPU(BIG)"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 5
+      rail_name: "S3M_VDD_CPUCL1"
+      subsys_name: "CPU(MID)"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 6
+      rail_name: "S4M_VDD_CPUCL0"
+      subsys_name: "CPU(LITTLE)"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 7
+      rail_name: "S5M_VDD_INT"
+      subsys_name: "INT"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 8
+      rail_name: "S8M_LLDO2"
+      subsys_name: "LDO"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 9
+      rail_name: "L15M_VDD_SLC_M"
+      subsys_name: "SLC"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 10
+      rail_name: "S10M_VDD_TPU"
+      subsys_name: "TPU"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 11
+      rail_name: "S6M_LLDO1"
+      subsys_name: "LDO"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 12
+      rail_name: "VSYS_PWR_DISPLAY"
+      subsys_name: "Display"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 13
+      rail_name: "VSYS_PWR_WLAN_BT"
+      subsys_name: "WLAN-BT"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 14
+      rail_name: "L9S_GNSS_CORE"
+      subsys_name: "GPS"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 15
+      rail_name: "S1S_VDD_CAM"
+      subsys_name: "Multimedia"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 16
+      rail_name: "S2S_VDD_G3D"
+      subsys_name: "GPU"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 17
+      rail_name: "S4S_VDD2H_MEM"
+      subsys_name: "DDR"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 18
+      rail_name: "S5S_VDDQ_MEM"
+      subsys_name: "DDR"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 19
+      rail_name: "S8S_VDD_G3D_L2"
+      subsys_name: "GPU"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 20
+      rail_name: "S9S_VDD_AOC"
+      subsys_name: "AOC"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 21
+      rail_name: "L7S_SENSORS"
+      subsys_name: "Sensors"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 22
+      rail_name: "L14S_ALIVE"
+      subsys_name: "Alive"
+      sampling_rate: 0
+    }
+    rail_descriptor {
+      index: 23
+      rail_name: "L2S_PLL_MIPI_UFS"
+      subsys_name: "PLL"
+      sampling_rate: 0
+    }
+    energy_data {
+      index: 0
+      timestamp_ms: 5860912
+      energy: 205586657
+    }
+    energy_data {
+      index: 1
+      timestamp_ms: 5860912
+      energy: 151547154
+    }
+    energy_data {
+      index: 2
+      timestamp_ms: 5860912
+      energy: 0
+    }
+    energy_data {
+      index: 3
+      timestamp_ms: 5860912
+      energy: 338384712
+    }
+    energy_data {
+      index: 4
+      timestamp_ms: 5860912
+      energy: 558466341
+    }
+    energy_data {
+      index: 5
+      timestamp_ms: 5860912
+      energy: 362399423
+    }
+    energy_data {
+      index: 6
+      timestamp_ms: 5860912
+      energy: 767062656
+    }
+    energy_data {
+      index: 7
+      timestamp_ms: 5860912
+      energy: 135580223
+    }
+    energy_data {
+      index: 8
+      timestamp_ms: 5860912
+      energy: 236698251
+    }
+    energy_data {
+      index: 9
+      timestamp_ms: 5860912
+      energy: 154023771
+    }
+    energy_data {
+      index: 10
+      timestamp_ms: 5860912
+      energy: 6293
+    }
+    energy_data {
+      index: 11
+      timestamp_ms: 5860912
+      energy: 747619179
+    }
+    energy_data {
+      index: 12
+      timestamp_ms: 5860916
+      energy: 2272137072
+    }
+    energy_data {
+      index: 13
+      timestamp_ms: 5860916
+      energy: 331657946
+    }
+    energy_data {
+      index: 14
+      timestamp_ms: 5860916
+      energy: 15459467
+    }
+    energy_data {
+      index: 15
+      timestamp_ms: 5860916
+      energy: 14590922
+    }
+    energy_data {
+      index: 16
+      timestamp_ms: 5860916
+      energy: 148897383
+    }
+    energy_data {
+      index: 17
+      timestamp_ms: 5860916
+      energy: 230464641
+    }
+    energy_data {
+      index: 18
+      timestamp_ms: 5860916
+      energy: 36795394
+    }
+    energy_data {
+      index: 19
+      timestamp_ms: 5860916
+      energy: 22330953
+    }
+    energy_data {
+      index: 20
+      timestamp_ms: 5860916
+      energy: 95848722
+    }
+    energy_data {
+      index: 21
+      timestamp_ms: 5860916
+      energy: 23187541
+    }
+    energy_data {
+      index: 22
+      timestamp_ms: 5860916
+      energy: 2185
+    }
+    energy_data {
+      index: 23
+      timestamp_ms: 5860916
+      energy: 162041459
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861001663872
+  battery {
+    charge_counter_uah: 5112000
+    capacity_percent: 100.000000
+    current_ua: -625
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861006870415
+  sequence_flags: 2
+  power_rails {
+    energy_data {
+      index: 0
+      timestamp_ms: 5860912
+      energy: 205586657
+    }
+    energy_data {
+      index: 1
+      timestamp_ms: 5860912
+      energy: 151547154
+    }
+    energy_data {
+      index: 2
+      timestamp_ms: 5860912
+      energy: 0
+    }
+    energy_data {
+      index: 3
+      timestamp_ms: 5860912
+      energy: 338384712
+    }
+    energy_data {
+      index: 4
+      timestamp_ms: 5860912
+      energy: 558466341
+    }
+    energy_data {
+      index: 5
+      timestamp_ms: 5860912
+      energy: 362399423
+    }
+    energy_data {
+      index: 6
+      timestamp_ms: 5860912
+      energy: 767062656
+    }
+    energy_data {
+      index: 7
+      timestamp_ms: 5860912
+      energy: 135580223
+    }
+    energy_data {
+      index: 8
+      timestamp_ms: 5860912
+      energy: 236698251
+    }
+    energy_data {
+      index: 9
+      timestamp_ms: 5860912
+      energy: 154023771
+    }
+    energy_data {
+      index: 10
+      timestamp_ms: 5860912
+      energy: 6293
+    }
+    energy_data {
+      index: 11
+      timestamp_ms: 5860912
+      energy: 747619179
+    }
+    energy_data {
+      index: 12
+      timestamp_ms: 5860916
+      energy: 2272137072
+    }
+    energy_data {
+      index: 13
+      timestamp_ms: 5860916
+      energy: 331657946
+    }
+    energy_data {
+      index: 14
+      timestamp_ms: 5860916
+      energy: 15459467
+    }
+    energy_data {
+      index: 15
+      timestamp_ms: 5860916
+      energy: 14590922
+    }
+    energy_data {
+      index: 16
+      timestamp_ms: 5860916
+      energy: 148897383
+    }
+    energy_data {
+      index: 17
+      timestamp_ms: 5860916
+      energy: 230464641
+    }
+    energy_data {
+      index: 18
+      timestamp_ms: 5860916
+      energy: 36795394
+    }
+    energy_data {
+      index: 19
+      timestamp_ms: 5860916
+      energy: 22330953
+    }
+    energy_data {
+      index: 20
+      timestamp_ms: 5860916
+      energy: 95848722
+    }
+    energy_data {
+      index: 21
+      timestamp_ms: 5860916
+      energy: 23187541
+    }
+    energy_data {
+      index: 22
+      timestamp_ms: 5860916
+      energy: 2185
+    }
+    energy_data {
+      index: 23
+      timestamp_ms: 5860916
+      energy: 162041459
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861250905856
+  battery {
+    charge_counter_uah: 5112000
+    capacity_percent: 100.000000
+    current_ua: -625
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861257490125
+  sequence_flags: 2
+  power_rails {
+    energy_data {
+      index: 0
+      timestamp_ms: 5861258
+      energy: 205597591
+    }
+    energy_data {
+      index: 1
+      timestamp_ms: 5861258
+      energy: 151554774
+    }
+    energy_data {
+      index: 2
+      timestamp_ms: 5861258
+      energy: 0
+    }
+    energy_data {
+      index: 3
+      timestamp_ms: 5861258
+      energy: 338389886
+    }
+    energy_data {
+      index: 4
+      timestamp_ms: 5861258
+      energy: 558466341
+    }
+    energy_data {
+      index: 5
+      timestamp_ms: 5861258
+      energy: 362403117
+    }
+    energy_data {
+      index: 6
+      timestamp_ms: 5861258
+      energy: 767070610
+    }
+    energy_data {
+      index: 7
+      timestamp_ms: 5861258
+      energy: 135585960
+    }
+    energy_data {
+      index: 8
+      timestamp_ms: 5861258
+      energy: 236711115
+    }
+    energy_data {
+      index: 9
+      timestamp_ms: 5861258
+      energy: 154031649
+    }
+    energy_data {
+      index: 10
+      timestamp_ms: 5861258
+      energy: 6293
+    }
+    energy_data {
+      index: 11
+      timestamp_ms: 5861258
+      energy: 747648998
+    }
+    energy_data {
+      index: 12
+      timestamp_ms: 5861270
+      energy: 2272237924
+    }
+    energy_data {
+      index: 13
+      timestamp_ms: 5861270
+      energy: 331673742
+    }
+    energy_data {
+      index: 14
+      timestamp_ms: 5861270
+      energy: 15459467
+    }
+    energy_data {
+      index: 15
+      timestamp_ms: 5861270
+      energy: 14590922
+    }
+    energy_data {
+      index: 16
+      timestamp_ms: 5861270
+      energy: 148897383
+    }
+    energy_data {
+      index: 17
+      timestamp_ms: 5861270
+      energy: 230468395
+    }
+    energy_data {
+      index: 18
+      timestamp_ms: 5861270
+      energy: 36795714
+    }
+    energy_data {
+      index: 19
+      timestamp_ms: 5861270
+      energy: 22330953
+    }
+    energy_data {
+      index: 20
+      timestamp_ms: 5861270
+      energy: 95852174
+    }
+    energy_data {
+      index: 21
+      timestamp_ms: 5861270
+      energy: 23188892
+    }
+    energy_data {
+      index: 22
+      timestamp_ms: 5861270
+      energy: 2185
+    }
+    energy_data {
+      index: 23
+      timestamp_ms: 5861270
+      energy: 162046125
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861502170098
+  battery {
+    charge_counter_uah: 5112000
+    capacity_percent: 100.000000
+    current_ua: -5625
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861506973971
+  sequence_flags: 2
+  power_rails {
+    energy_data {
+      index: 0
+      timestamp_ms: 5861507
+      energy: 205605482
+    }
+    energy_data {
+      index: 1
+      timestamp_ms: 5861507
+      energy: 151560531
+    }
+    energy_data {
+      index: 2
+      timestamp_ms: 5861507
+      energy: 0
+    }
+    energy_data {
+      index: 3
+      timestamp_ms: 5861507
+      energy: 338393204
+    }
+    energy_data {
+      index: 4
+      timestamp_ms: 5861507
+      energy: 558466341
+    }
+    energy_data {
+      index: 5
+      timestamp_ms: 5861507
+      energy: 362403117
+    }
+    energy_data {
+      index: 6
+      timestamp_ms: 5861507
+      energy: 767074975
+    }
+    energy_data {
+      index: 7
+      timestamp_ms: 5861507
+      energy: 135589961
+    }
+    energy_data {
+      index: 8
+      timestamp_ms: 5861507
+      energy: 236720628
+    }
+    energy_data {
+      index: 9
+      timestamp_ms: 5861507
+      energy: 154037383
+    }
+    energy_data {
+      index: 10
+      timestamp_ms: 5861507
+      energy: 6293
+    }
+    energy_data {
+      index: 11
+      timestamp_ms: 5861507
+      energy: 747671304
+    }
+    energy_data {
+      index: 12
+      timestamp_ms: 5861519
+      energy: 2272316227
+    }
+    energy_data {
+      index: 13
+      timestamp_ms: 5861519
+      energy: 331675375
+    }
+    energy_data {
+      index: 14
+      timestamp_ms: 5861519
+      energy: 15459467
+    }
+    energy_data {
+      index: 15
+      timestamp_ms: 5861519
+      energy: 14590922
+    }
+    energy_data {
+      index: 16
+      timestamp_ms: 5861519
+      energy: 148897383
+    }
+    energy_data {
+      index: 17
+      timestamp_ms: 5861519
+      energy: 230471430
+    }
+    energy_data {
+      index: 18
+      timestamp_ms: 5861519
+      energy: 36795904
+    }
+    energy_data {
+      index: 19
+      timestamp_ms: 5861519
+      energy: 22330953
+    }
+    energy_data {
+      index: 20
+      timestamp_ms: 5861519
+      energy: 95854357
+    }
+    energy_data {
+      index: 21
+      timestamp_ms: 5861519
+      energy: 23189612
+    }
+    energy_data {
+      index: 22
+      timestamp_ms: 5861519
+      energy: 2185
+    }
+    energy_data {
+      index: 23
+      timestamp_ms: 5861519
+      energy: 162049529
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861751779635
+  battery {
+    charge_counter_uah: 5112000
+    capacity_percent: 100.000000
+    current_ua: -6875
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861756753675
+  sequence_flags: 2
+  power_rails {
+    energy_data {
+      index: 0
+      timestamp_ms: 5861757
+      energy: 205613373
+    }
+    energy_data {
+      index: 1
+      timestamp_ms: 5861757
+      energy: 151570163
+    }
+    energy_data {
+      index: 2
+      timestamp_ms: 5861757
+      energy: 0
+    }
+    energy_data {
+      index: 3
+      timestamp_ms: 5861757
+      energy: 338396645
+    }
+    energy_data {
+      index: 4
+      timestamp_ms: 5861757
+      energy: 558467082
+    }
+    energy_data {
+      index: 5
+      timestamp_ms: 5861757
+      energy: 362403117
+    }
+    energy_data {
+      index: 6
+      timestamp_ms: 5861757
+      energy: 767079558
+    }
+    energy_data {
+      index: 7
+      timestamp_ms: 5861757
+      energy: 135593562
+    }
+    energy_data {
+      index: 8
+      timestamp_ms: 5861757
+      energy: 236730307
+    }
+    energy_data {
+      index: 9
+      timestamp_ms: 5861757
+      energy: 154043049
+    }
+    energy_data {
+      index: 10
+      timestamp_ms: 5861757
+      energy: 6293
+    }
+    energy_data {
+      index: 11
+      timestamp_ms: 5861757
+      energy: 747692922
+    }
+    energy_data {
+      index: 12
+      timestamp_ms: 5861768
+      energy: 2272386986
+    }
+    energy_data {
+      index: 13
+      timestamp_ms: 5861768
+      energy: 331685690
+    }
+    energy_data {
+      index: 14
+      timestamp_ms: 5861768
+      energy: 15459467
+    }
+    energy_data {
+      index: 15
+      timestamp_ms: 5861768
+      energy: 14590922
+    }
+    energy_data {
+      index: 16
+      timestamp_ms: 5861768
+      energy: 148897383
+    }
+    energy_data {
+      index: 17
+      timestamp_ms: 5861768
+      energy: 230474145
+    }
+    energy_data {
+      index: 18
+      timestamp_ms: 5861768
+      energy: 36796104
+    }
+    energy_data {
+      index: 19
+      timestamp_ms: 5861768
+      energy: 22330953
+    }
+    energy_data {
+      index: 20
+      timestamp_ms: 5861768
+      energy: 95856348
+    }
+    energy_data {
+      index: 21
+      timestamp_ms: 5861768
+      energy: 23190518
+    }
+    energy_data {
+      index: 22
+      timestamp_ms: 5861768
+      energy: 2185
+    }
+    energy_data {
+      index: 23
+      timestamp_ms: 5861768
+      energy: 162052972
+    }
+  }
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 2
+  trusted_pid: 955
+}
+packet {
+  timestamp: 5861918455213
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  service_event {
+    read_tracing_buffers_completed: true
+  }
+}
+packet {
+  trusted_uid: 9999
+  trusted_packet_sequence_id: 1
+  trace_stats {
+    buffer_stats {
+      buffer_size: 67108864
+      bytes_written: 32768
+      bytes_read: 32768
+      chunks_written: 1
+      chunks_read: 1
+    }
+    producers_connected: 4
+    producers_seen: 4
+    data_sources_registered: 18
+    data_sources_seen: 258
+    tracing_sessions: 1
+    total_buffers: 1
+    chunks_discarded: 9
+    patches_discarded: 0
+    invalid_packets: 0
+    flushes_requested: 1
+    flushes_succeeded: 1
+    flushes_failed: 0
+    final_flush_outcome: FINAL_FLUSH_SUCCEEDED
+  }
+}

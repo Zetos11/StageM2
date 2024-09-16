@@ -1,0 +1,89 @@
+Plan Rapport Stage M2 Noé CHACHIGNOT
+
+I Introduction  
+
+    1.1 Contexte et objectif
+        Pourquoi s'intéresser à la conso de librairies Android ?
+        L'équipe Spirals, equipe de recherche de l'INRIA, Système distribué et Impact du numérique sur l'environnement
+        Des travaux de Rémy Raes sur la conso de libraries Android existe déjà, ils ont necessité d'outiller un téléphone et ne sont pas reproduisible facilement/efficacement
+        Explications Défi batterie/place/consommation
+        Contextualisation sur PowerAPI
+    
+    1.2 Sujet d'origine  
+        Projet d'origine sur PowerAPI
+        Créer un sensor Android pour PowerAPI pour pouvoir mesurer la consommation des applications Android et les classer. 
+        
+
+II Résumé des travaux avant le stage
+
+    2.1 Tentative d'adapter le modèle de PowerAPI à Android
+        Exploiter les similitudes entre Androd et Linux (Kernel Linux)
+        Cgroup, RAPL, Flags
+        Echec, il manque des librairies nécessaires, pas installable pour des raisons de sécurités.
+
+    2.2 PowerRails
+        Rails de consommation disponible sur certain modèles de téléphone Android.
+        Permettent de récupérer les consomations individuelles des composants
+        Difficile d'accès
+
+    2.3 Objectif du stage
+        Limites/besoins/potentiel solution
+
+III Conception de l'application et expérimentation
+
+    3.1 Application Python
+        Perfetto -> PowerRails 
+        Parsing des résultats, isolations des consommations par threading
+        Test avec les TPLs 
+        Problème de vérification
+        Croisement valeurs power_profil.xml
+        Différence pour les powers rails (GPS, WIFI, SCREEN)
+
+    3.1 Application Flutter
+        BatteryManager, API Public/Hidden
+        HAL/HIDL, PowerStatsHAL
+        Channel Custom
+        Tentative d'intégration du parser en Java pour accéder aux systrace
+    
+
+    3.3 Expérimentation
+        3.3.1 TPLs
+            Comparatif seulement du CPU avec les APKs teste de Rémy, comparaison avec les ordres de grandeur de ses résultats
+        3.3.2 Apps 
+            Comparatif avec des moyennes et différences des power rails
+            2 catégorie : 
+                Vidéo : Youtube, DailyMotion, FreeTube, Vimeo
+                Maps : Waze, Google Maps, Mappy, Yandex ?
+
+
+IV Résultats et Conclusions
+
+    4.1 Résultats des expériences
+        Conclure sur la précision de la méthode et les ordres de grandeur des différences de consommation.
+        
+    4.2 Bilan de l'écosystème Android pour les questions liées à la consommation
+        Au cours de nos recherches nous nous sommes heurtés à plusieurs problèmes majeurs liés à l'environnement Android :
+
+            La documentation parfois absente, parfois erronée, nous a beaucoup posé problème et fait perdre beaucoup de temps.
+            Les informations sont diffcile à trouver et imprécise et il n'est pas rare que la documentation ne soit pas parfaitement à jour avec ce que propose le SDK.
+            Le meilleur exemple est celui de la documentation du BatteryManager, les documentations de chaque compteur et les unités ne correspondaient pas à la réalité des résultats.
+            Nous avons dû tester nous même chaque compteur et constante de l'API pour finir par trouver (avec l'aide d'un poste sur Reddit) les vraies définitions.
+
+            C'est loin d'être le cas partout mais il semble assez clair que les docuementations liés aux informations de ce type sont peu consultés et des erreurs y subsistent souvent pendant plusieurs semaines/mois.
+
+            L'autre soucis qui fait perdre beaucoup de temps et l'indisponibilité des Api lié à la consommation des appareils. 
+            Seul le BatteryManager est entièrement disponible et accessible, il existe quelques autres compteurs accessible ailleurs (Par exemple de l'interface Health qui donne accès à des capteurs très variés) mais la grande majorité est caché (avec l'annotation @Hidden).
+            Cela est justifié par Android par une volonté de protection et surtout d'assurance du maintien des APIs entre plusieurs versions d'Android.
+            Il est expliqué dans la documentation que les APIs caché ne doivent plus être utilisé lors du développement d'application afin de permettre aux développeurs d'Android de les supprimer ou de les mod
+
+            Enfin le projet de suivi de la consommation Android semble avoir ralenti depuis Android 10/11.
+            A ce moment là, les APIs sont ajoutés mais depuis il y a eu peu de modification. 
+            Comme nous l'avons décrit dans ce rapport, il n'y a toujours pas d'interface/API disponible pour accéder aux power rails.
+
+
+        Peu d'évolution depuis Android 10/11
+
+    4.3 Limites des résultats/expériences
+
+    4.4 Futur works 
+        Adaptation de la solution à PowerAPI
